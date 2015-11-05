@@ -10,7 +10,7 @@
         <input type="{$form_password}" name="password" size="20" maxlength="20" placeholder="パスワードを入力"/>
         <input type="{$login_button}" name="login"  value="ログイン" />
         <input type="{$logout_button}" onclick="location.href='http://192.168.33.10/workspace/BBS1/logout.php'" value='ログアウト'/>
-        <input type="button" onclick="location.href='http://192.168.33.10/workspace/BBS1/signup.php'" value='新規登録'/>
+        <input type="{$signup_button}" onclick="location.href='http://192.168.33.10/workspace/BBS1/signup.php'" value='新規登録'/>
         <input type="button" onclick="location.href='http://192.168.33.10/workspace/BBS1/index.php'" value='再読み込み'/>
     </form>
         

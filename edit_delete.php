@@ -85,31 +85,31 @@ try {
     $stt = $db->prepare("UPDATE bbs1 SET name = :name, text = :text WHERE number = :number");
     
     //文字数チェック
-    $error_check1 = 0;
+    $error_check = 0;
     $stt->bindValue(':number', $post['text_number']);
     
-    if($post['name']==NULL){
+    if(!isset($post['name']) || is_null($post['name']) || empty($post['name'])){
         $smarty->assign('error_msg_edit1','名前を入力してください');
-        $error_check1 = 1;
+        $error_check = 1;
     } else if (mb_strlen($post['name'])>20) {
         $smarty->assign('error_msg_edit1','名前は20文字までです');
-        $error_check1 = 1;
+        $error_check = 1;
     } else {
         $stt->bindValue(':name', $post['name']);
     }
     
-    if($post['text']==NULL){
+    if(!isset($post['text']) || is_null($post['text']) || empty($post['text'])){
         $smarty->assign('error_msg_edit2','本文を入力してください');
-        $error_check1 = 1;
+        $error_check = 1;
     } else if(mb_strlen($post['text'])>140) {
         $smarty->assign('error_msg_edit2','本文は140文字までです');
-        $error_check1 = 1;
+        $error_check = 1;
     } else {
         $stt->bindValue(':text', $post['text']);
     }
     
     //エラーがなければUPDATE命令実行
-    if($error_check1 == 0){
+    if($error_check == 0){
         $stt->execute();
         $smarty->assign('edited_msg', "編集しました");
     }
